@@ -477,7 +477,7 @@
     window.addEventListener("message", (event) => {
       if (
         (event.origin !== appScriptOrigin &&
-          !/^https:\/\/[a-z0-9-]+\.script\.googleusercontent\.com$/.test(event.origin)) ||
+          !/^https:\/\/[a-z0-9-]+-script\.googleusercontent\.com$/.test(event.origin)) ||
         !event.data ||
         event.data.type !== "registration-result" ||
         event.data.requestId !== activeRequestId
