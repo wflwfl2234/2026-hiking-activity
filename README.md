@@ -10,7 +10,7 @@ GitHub Repo 使用網址可相容的英文名稱 `2026-hiking-activity`；Google
 
 - [Google 試算表](https://docs.google.com/spreadsheets/d/1h1ND2jOF2rzFd3kf9rtcM59PHI5o4RlULSXPqcC498E/edit)
 - [Apps Script 專案](https://script.google.com/home/projects/1v-60wIxUCTmY3suhlDzV56LLdFDtPzqPOSn3AbiiHlF-cp13QTjX807c/edit)
-- [Apps Script 報名端點](https://script.google.com/macros/s/AKfycbxg5SJHdgafnoPf7b_w5FtkWob039vT_a4bBTAXUZytHgWhkRYrWRaoCHcSIFZuDJUF/exec)
+- [Apps Script 報名端點](https://script.google.com/macros/s/AKfycbw9g17WcqIC_PB7Ud1K9cXvapbautrx4kkfsrQlIourpxmlRAKqaF9o4BC2EAICL4zb/exec)
 
 ## 建立報名試算表與 Apps Script
 

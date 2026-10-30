@@ -102,7 +102,7 @@ function resultPage(ok, message, requestId) {
   }).replace(/</g, '\\u003c');
   return HtmlService.createHtmlOutput(
     '<!doctype html><meta charset="utf-8"><script>' +
-    'window.parent.postMessage(' + payload + ',"*");' +
+    'window.top.postMessage(' + payload + ',"*");' +
     '</script>'
   ).setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
 }
