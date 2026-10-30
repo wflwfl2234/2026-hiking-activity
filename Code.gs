@@ -1,14 +1,11 @@
 const SPREADSHEET_NAME = '2026_登山活動';
 const SHEET_NAME = '報名資料';
 const HEADERS = ['時間戳記', '姓名', 'Email', '單位', '電話', '職稱'];
+const TARGET_SPREADSHEET_ID = '1h1ND2jOF2rzFd3kf9rtcM59PHI5o4RlULSXPqcC498E';
 const SPREADSHEET_ID_PROPERTY = 'REGISTRATION_SPREADSHEET_ID';
 
 function setupSheet() {
-  const spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
-  if (!spreadsheet) {
-    throw new Error('請先從目標 Google 試算表開啟 Apps Script，再執行 setupSheet。');
-  }
-
+  const spreadsheet = SpreadsheetApp.openById(TARGET_SPREADSHEET_ID);
   spreadsheet.rename(SPREADSHEET_NAME);
   const sheet = spreadsheet.getSheets()[0];
   sheet.setName(SHEET_NAME);
@@ -43,11 +40,11 @@ function doPost(event) {
     return resultPage(false, '無法送出報名資料。', requestId);
   }
 
-  const name = cleanValue(values.name, 100);
-  const email = cleanValue(values.email, 254);
-  const organization = cleanValue(values.organization, 150);
+  const name = cleanSpreadsheetText(values.name, 100);
+  const email = cleanSpreadsheetText(values.email, 254);
+  const organization = cleanSpreadsheetText(values.organization, 150);
   const phone = cleanValue(values.phone, 30);
-  const title = cleanValue(values.title, 100);
+  const title = cleanSpreadsheetText(values.title, 100);
 
   if (!name || !email || !phone) {
     return resultPage(false, '請填寫姓名、Email 和電話。', requestId);
@@ -84,6 +81,11 @@ function doPost(event) {
 
 function cleanValue(value, maxLength) {
   return String(value || '').trim().slice(0, maxLength);
+}
+
+function cleanSpreadsheetText(value, maxLength) {
+  const cleaned = cleanValue(value, maxLength);
+  return /^[=+\-@]/.test(cleaned) ? "'" + cleaned : cleaned;
 }
 
 function cleanRequestId(value) {
